@@ -38,6 +38,8 @@ class problem3Sum{
         
         for(int i=0; i<nums.length-2; i++)
         {
+            //Optimization found by skipping over repeat numbers
+            // IE [1,1,1,2,2], it will move left pointer until its the last repeat within the sequence
             if(i > 0 && nums[i] == nums[i-1])
                 continue;
             
