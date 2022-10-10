@@ -13,12 +13,16 @@ class problem3Sum{
 
     public static List<List<Integer>> threeSum(int[] nums) {
         
+        //Sor the list to make it easier to find numbers searching
         Arrays.sort(nums);
         
+        //Array list for the solution
         ArrayList<List<Integer>> sol = new ArrayList<>();
         
+        //Left pointer
         int left = 0;
         
+        //WHile loop to keep seraching until we reach the end of the array
         while(left < nums.length-2)
         {
             if(nums[left] == nums[left+1])
