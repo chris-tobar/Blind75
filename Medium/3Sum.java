@@ -4,6 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Arrays;
 
+/*
+ * Given an integer array nums, return all the triplets [nums[i], nums[j], nums[k]] 
+ * such that i != j, i != k, and j != k, and nums[i] + nums[j] + nums[k] == 0.
+
+    Notice that the solution set must not contain duplicate triplets.
+ */
 class problem3Sum{
 
     public static void main(String[] args) {
@@ -25,6 +31,7 @@ class problem3Sum{
         //WHile loop to keep seraching until we reach the end of the array
         while(left < nums.length-2)
         {
+
             if(nums[left] == nums[left+1])
                 left++;
             else
