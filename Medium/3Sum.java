@@ -14,7 +14,19 @@ class problem3Sum{
 
     public static void main(String[] args) {
         
-        System.out.println("hello world");
+        //Solution: {}
+        int[] example1 = {0,1,1};
+
+        //Solution: {0,0,0}
+        int[] example2 = {0,0,0};
+
+        //Solution: {-1,0,1} && {-1,-1,2}
+        int[] example3 = {-1,0,1,2,-1,-4};
+
+
+        System.out.println( threeSum(example1));
+        System.out.println( threeSum(example2));
+        System.out.println( threeSum(example3));
     }
 
     public static List<List<Integer>> threeSum(int[] nums) {
