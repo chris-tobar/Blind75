@@ -32,8 +32,10 @@ class problem3Sum{
 
     public static List<List<Integer>> threeSum(int[] nums) {
         
+        //HashSet that will contain all our repeated numbers
         HashSet<List<Integer>> repeats = new HashSet<>();
         
+        //Sort the array to take an approach that is similar to Binary Search
         Arrays.sort(nums);
         
         for(int i=0; i<nums.length-2; i++)
@@ -43,22 +45,31 @@ class problem3Sum{
             if(i > 0 && nums[i] == nums[i-1])
                 continue;
             
+            //j acts as left pointer in a binary search and will search the low numbers
             int j = i + 1;
+            //k acts as the right pointer in a binary search and will search the high numbers
             int k = nums.length - 1;
             
+            //Keep looping until j and k cross
             while(j < k)
             {
+                //Keep track of the sum
                 int sum = nums[i] + nums[j] + nums[k];
                 
+                //Sum found == 0 so we add it to hashSet
+                //Set is used to make sure that each solution found will be unique and no duplicates will be found
                 if(sum == 0)
                     repeats.add( Arrays.asList(nums[i],nums[j++],nums[k--]));
+                //Sum found is bigger so we need to decrement the right pointer by 1 to get smaller numbers to reach 0
                 else if( sum > 0)
                     k--;
+                //Sum found is too small, so we increment left pointer by 1 to get bigger numbers to reach 0
                 else if(sum < 0)
                     j++;
             }
         }
         
+        //Return the Arraylist 
         return new ArrayList<>(repeats);
     }
 }
