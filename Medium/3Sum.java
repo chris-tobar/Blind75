@@ -1,6 +1,7 @@
 package Medium;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Arrays;
 
@@ -31,53 +32,31 @@ class problem3Sum{
 
     public static List<List<Integer>> threeSum(int[] nums) {
         
-        //Sor the list to make it easier to find numbers searching
+        HashSet<List<Integer>> repeats = new HashSet<>();
+        
         Arrays.sort(nums);
         
-        //Array list for the solution
-        ArrayList<List<Integer>> sol = new ArrayList<>();
-        
-        //Left pointer
-        int left = 0;
-        
-        //WHile loop to keep seraching until we reach the end of the array
-        while(left < nums.length-2)
+        for(int i=0; i<nums.length-2; i++)
         {
-
-            if(nums[left] == nums[left+1])
-                left++;
-            else
+            if(i > 0 && nums[i] == nums[i-1])
+                continue;
+            
+            int j = i + 1;
+            int k = nums.length - 1;
+            
+            while(j < k)
             {
-                int innerLeft = left+1;
-                int innerRight = innerLeft+1;
+                int sum = nums[i] + nums[j] + nums[k];
                 
-                while(innerRight < nums.length)
-                {
-                    if(nums[innerLeft] == nums[innerRight])
-                    {
-                        innerLeft = innerRight;
-                        innerRight++;
-                    }
-                    else
-                    {
-                        if(nums[left]+nums[innerLeft]+nums[innerRight] == 0)
-                        {
-                            ArrayList<Integer> temp = new ArrayList<>();
-                            temp.add(nums[left]);
-                            temp.add(nums[innerLeft]);
-                            temp.add(nums[innerRight]);
-                            sol.add(temp);
-                            
-                            innerLeft = innerRight;
-                            innerRight++;
-                        }
-                    }
-                }
-                
-                left++;
+                if(sum == 0)
+                    repeats.add( Arrays.asList(nums[i],nums[j++],nums[k--]));
+                else if( sum > 0)
+                    k--;
+                else if(sum < 0)
+                    j++;
             }
         }
         
-        return sol;
+        return new ArrayList<>(repeats);
     }
 }
