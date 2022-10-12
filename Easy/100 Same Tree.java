@@ -1,5 +1,12 @@
 package Easy;
 
+/*
+ * Given the roots of two binary trees p and q, write a function 
+ * to check if they are the same or not.
+
+    Two binary trees are considered the same if they are 
+    structurally identical, and the nodes have the same value.
+ */
 class problem100{
     
     public static void main(String[] args) {
